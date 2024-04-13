@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../css/form.css"
 
 const Manage = () => {
     const [formData, setFormData] = useState({firstName: "", lastName: "", phoneNumber: "", email: "",
@@ -16,32 +17,36 @@ const Manage = () => {
     };
     return(
     <form onSubmit={handleSubmit}>
-        <label htmlFor="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange}/>
-        <label htmlFor="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange}/>
-        
-        <label htmlFor="phoneNumber">Phone Number:</label>
-        <input type="text" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
-
-        <label htmlFor="email">Email:</label>
-        <input type="text" id="email" name="email" value={formData.email} onChange={handleChange}/>
-
-        <label htmlFor="idNum">ID Number:</label>
-        <input type="text" id="idNum" name="idNum" value={formData.idNum} onChange={handleChange}/>
-
-        <label htmlFor="jobClass">Job Class:</label>
-        <input type="text" id="jobClass" name="jobClass" value={formData.jobClass} onChange={handleChange}/>
-        <label htmlFor="jobRank">Job Rank:</label>
-        <input type="text" id="jobRank" name="jobRank" value={formData.jobRank} onChange={handleChange}/>
-
-        <label htmlFor="address">Address:</label>
-        <input type="text" id="address" name="address" value={formData.address} onChange={handleChange}/>
-        <label htmlFor="city">City:</label>
-        <input type="text" id="city" name="city" value={formData.city} onChange={handleChange}/>
-        <label htmlFor="state">State:</label>
-        <input type="text" id="state" name="state" value={formData.state} onChange={handleChange}/>
-
+        <ul style={{backgroundColor:"white"}}>
+            <li>
+                <label htmlFor="firstName">First Name: </label>
+                <input type="text" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange}/>
+                <label htmlFor="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange}/>
+            </li>
+            <li>
+                <label htmlFor="phoneNumber">Phone Number: </label>
+                <input type="text" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
+                <label htmlFor="idNum">ID Number:</label>
+                <input type="text" id="idNum" name="idNum" value={formData.idNum} onChange={handleChange}/>
+            </li>
+            <li>
+                <label htmlFor="jobClass">Job Class: </label>
+                <input type="text" id="jobClass" name="jobClass" value={formData.jobClass} onChange={handleChange}/>
+                <label htmlFor="jobRank">Job Rank: </label>
+                <input type="text" id="jobRank" name="jobRank" value={formData.jobRank} onChange={handleChange}/>
+            </li>
+            <li>
+                <label htmlFor="address">Address: </label>
+                <input type="text" id="address" name="address" value={formData.address} onChange={handleChange}/>
+            </li>
+            <li>
+                <label htmlFor="city">City: </label>
+                <input type="text" id="city" name="city" value={formData.city} onChange={handleChange}/>
+                <label htmlFor="state">State: </label>
+                <input type="text" id="state" name="state" value={formData.state} onChange={handleChange}/>
+            </li>
+        </ul>
       <button type="submit">Submit</button>
     </form>
     );
