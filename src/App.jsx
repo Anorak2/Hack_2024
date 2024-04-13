@@ -1,5 +1,11 @@
+import Header from "./Header.jsx";
+import sidebar from "./sidebar.jsx";
+
 export default function App(){
     return (
-        <h1>hello</h1>
+        <div>
+            <Header></Header>
+            
+        </div>
     );
 }

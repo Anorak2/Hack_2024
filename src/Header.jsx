@@ -1,8 +1,15 @@
+import "./css/headerStyle.css"
 
 function Header() {
-    return (<Header> 
-        <h1>My Website :D</h1>
-    </Header>);
+    return (
+    <header> 
+        <nav>
+            <ul>
+                <li><a href="#">Hamburger</a></li>
+                <li style={{float:"right"}}><a href="#">Account</a></li>
+                <li style={{float:"right"}}><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>);
 }
-
 export default Header;
