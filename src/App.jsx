@@ -1,5 +1,5 @@
-import Header from "./Header.jsx";
-import Sidebar from "./Sidebar.jsx";
+import Header from "./components/Header.jsx";
+import Sidebar from "./components/Sidebar.jsx";
 import "./css/general_page.css";
 
 export default function App(){
