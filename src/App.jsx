@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Manage from "./pages/Manage.jsx";
 import Main from "./pages/Main.jsx";
+import axios from 'axios';
 
 function App(){
     return (
