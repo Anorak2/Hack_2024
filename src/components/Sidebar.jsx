@@ -5,7 +5,7 @@ function Sidebar() {
     <div className="sidebar">
         <a href="/">Home</a>
         <a href="/Manage">Manage</a>
-        <a href="#clients">Notify</a>
+        <a href="/Notify">Notify</a>
     </div>
     );
 }
