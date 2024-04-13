@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Manage from "./pages/Manage.jsx";
 import Main from "./pages/Main.jsx";
+import Notify from "./pages/Notify.jsx";
 
 function App(){
     return (
@@ -17,6 +18,9 @@ function App(){
                     </Route>
                     <Route path="/Manage">
                         <Manage />
+                    </Route>
+                    <Route path="/Notify">
+                        <Notify />
                     </Route>
                 </Switch>
             </div>
