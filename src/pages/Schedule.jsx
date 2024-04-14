@@ -5,7 +5,7 @@ const Schedule = () => {
   const [tableData, setTableData] = useState([]);
 
   const headers = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const names = ['Alice', 'Bob', 'Charlie']; // Add your employee names here
+  const names = ['Alice', 'Bob', 'Charlie', 'steve']; // Add your employee names here
 
   const fetchData = async () => {
     // Fetch data from API or local source
