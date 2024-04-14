@@ -11,7 +11,14 @@ function App(){
         <div>
             <Header></Header>
             <Sidebar></Sidebar>
-            <div id="Content" style={{marginLeft: "160px"}}>
+            <div id="Content" style={{
+                position: "absolute",
+                left: "160px",
+                right: "0px",
+                bottom: "0px",
+                top: "52px",
+                width: "calc(100%-160px)",
+                height: "calc(100%-52px)"}}>
                 <Switch>
                     <Route exact path="/">
                         <Main />
