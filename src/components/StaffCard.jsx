@@ -11,7 +11,7 @@ function StaffCard({ onCheck }) {
           <div className="staff-card">
             <div className="header" style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
               <h3 style={{textAlign:'center'}}>{member.firstName} {member.lastName} ({member.jobTitle})</h3>
-              <input type="checkbox" onChange={() => onCheck({ email: member.email, name: member.firstName })} />
+              <input type="checkbox" onChange={() => onCheck({ email: member.email, name: member.firstName ,sunday: member.sunday, monday: member.monday, tuesday: member.tuesday, wednesday: member.wednesday,thursday: member.thursday,friday: member.friday,saturday: member.saturday})} />
             </div>
             <div className="details">
               <p>Phone: {member.phoneNumber}</p>
