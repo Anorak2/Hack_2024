@@ -4,7 +4,8 @@ function Sidebar() {
     return(
     <div className="sidebar">
         <a href="/">Home</a>
-        <a href="/Manage">Manage</a>
+        <a href="/schedule">Schedule</a>
+        <a href="/Manage">Add</a>
         <a href="/Notify">Notify</a>
     </div>
     );
