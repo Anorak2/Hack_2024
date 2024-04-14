@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
 import nodemailer from 'nodemailer';
-
 const html = `
     <h1> hello world </h1>
     <p> this better work</p>
-`
+`       
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth:{
+        user: 'project.email888129123@gmail.com',
+        pass: 'ifcg aswt jwgj auzy'
+    }
+});
 
-async function sendMail(){
-    const transporter = nodemailer.createTransport({
-        host: 'mail.openjavascript.info',
-        port: 465,
-        secure: true,
-        auth:{
-            user: 'project.email888129123@gmail.com',
-            pass:   'TM6Pvpn$A?z."#P'
-        }
-    });
+/** create reusable sendmail function 
+@params {object} options - mail options (to, subject, text, html)
+@params {function} callback - callback function to handle response
+*/
 
-    const info = await transporter.sendMail({
-        from: 'Adam <project.email888129123@gmail.com>',
-        to: 'adamcoleberry@gmail.com',
-        subject: "testing testing 123",
-        html:html,
-    })
-    console.log("message sent" + info.messageId)
-
-}   
-
-sendMail()
-.catch(e => console.log(e));
+const sendMail = async (mailDetails, callback) => {
+    try {
+      const info = await transporter.sendMail(mailDetails)
+      callback(info);
+    } catch (error) {
+      console.log(error);
+    } 
+  
+};
+export default sendMail;
