@@ -53,6 +53,6 @@ const HTML_TEMPLATE = (text) => {
       </body>
     </html>
   `;
-}
+};
 
-export default HTML_TEMPLATE;
+module.exports = HTML_TEMPLATE;
