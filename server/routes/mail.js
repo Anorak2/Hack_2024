@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
     const isWorking = (value) => value ? 'Working' : 'Not working';
 
     // Construct the message
-    const message = `Hi ${name}, your schedule has been released\n Sunday: ${isworking(sunday)}\n Monday: ${isworking(monday)}\n Tuesday: ${isworking(tuesday)}\n Wednesday: ${isworking(wednesday)}\n Thursday: ${isworking(thursday)}\n Friday: ${isworking(friday)}\n Saturday: ${isworking(saturday)}`;
+    const message = `Hi ${name}, your schedule has been released`;
 
     // Configure email options
     const options = {

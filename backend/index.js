@@ -64,17 +64,28 @@ async function run() {
 
 
     // PUT Handler
-    app.put('/api/staff/:id', async (req, res) => {
-      const userId = req.params.id;
-      const { sunday, monday, tuesday, wednesday, thursday, friday, saturday } = req.body;
-      const updatedFields = { sunday, monday, tuesday, wednesday, thursday, friday, saturday };
-  
+    app.put('/api/staff/:firstName/:lastName', async (req, res) => {
+      const { firstName, lastName } = req.params;
+      const updatedFields = req.body;
+    
       try {
-          const result = await staffCollection.updateOne({ _id: userId }, { $set: updatedFields });
-          res.status(200).send('User schedule updated successfully');
+        // Find the staff member by name
+        const staff = await StaffModel.findOne({ firstName, lastName });
+    
+        if (!staff) {
+          return res.status(404).json({ error: "Staff member not found" });
+        }
+    
+        // Update the staff member with the provided fields
+        Object.assign(staff, updatedFields);
+    
+        // Save the updated staff member
+        await staff.save();
+    
+        res.status(200).json({ message: "Staff member updated successfully" });
       } catch (error) {
-          console.error('Error updating user schedule:', error);
-          res.status(500).send('Internal Server Error');
+        console.error('Error:', error);
+        res.status(500).json({ error: "Internal server error" });
       }
     });
 

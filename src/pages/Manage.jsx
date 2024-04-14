@@ -7,7 +7,7 @@ axios.defaults.baseURL = 'http://localhost:3001';
 
 const Manage = () => {
     const [formData, setFormData] = useState({firstName: "", lastName: "", phoneNumber: "", email: "",
-    address: "", city: "", state: "", jobTitle: "", sunday: "NA", monday: "NA", tuesday: "NA",wednesday: "NA", thursday: "NA", friday: "NA", saturday: "NA"});
+    address: "", city: "", state: "", jobTitle: ""});
 
     const handleChange = (event) => {
         const { name, value } = event.target;

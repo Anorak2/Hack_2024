@@ -55,8 +55,10 @@ const Schedule = () => {
     ));
   };
 
-  const handleCheckboxChange = (rowIndex, day, isChecked) => {
-    setSelectedDays((prevSelectedDays) => ({
+  const handleCheckboxChange = (name, day, isChecked) => {
+    // Find the index of the staff member by name
+    const rowIndex = staffMembers.findIndex(staff => staff.firstName === name);
+    setSelectedDays(prevSelectedDays => ({
       ...prevSelectedDays,
       [rowIndex]: {
         ...prevSelectedDays[rowIndex],
@@ -65,35 +67,25 @@ const Schedule = () => {
     }));
   };
 
-  const handleSubmit = async (event) => {
-  
-    // Initialize an array to store promises for each staff member update
-    const updatePromises = [];
-  
-    staffMembers.forEach((staff, index) => {
-      const { _id } = staff;
-      const daysWorked = selectedDays[index] || {}; // Get selected days for the staff member
+  const handleSubmit = async () => {
+    staffMembers.forEach(async (staff) => {
+      const { firstName, lastName } = staff;
+      const daysWorked = selectedDays[`${firstName} ${lastName}`] || {};
       const updatedDays = Object.fromEntries(
         Object.entries(daysWorked).map(([day, isSelected]) => [
           day.toLowerCase(), // Convert day to lowercase
           isSelected ? "True" : staff[day.toLowerCase()], // Replace "NA" with "True" if selected
         ])
       );
-  
-      // Construct the request promise
-      const updatePromise = axios.put(`/api/staff/${_id}`, updatedDays);
-      updatePromises.push(updatePromise);
+      try {
+        const response = await axios.put(`/api/staff/${firstName}/${lastName}`, updatedDays);
+        console.log('Response:', response.data);
+        // Handle successful response (if needed)
+      } catch (error) {
+        console.error('Error:', error);
+        // Handle error (if needed)
+      }
     });
-  
-    try {
-      // Wait for all update promises to resolve
-      const responses = await Promise.all(updatePromises);
-      console.log('Responses:', responses.map(response => response.data));
-      // Handle successful responses (if needed)
-    } catch (error) {
-      console.error('Error:', error);
-      // Handle error (if needed)
-    }
   };
   
   
