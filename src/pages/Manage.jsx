@@ -1,5 +1,9 @@
 import { useState } from "react";
+import axios from 'axios';
 import "../css/form.css"
+
+axios.defaults.baseURL = 'http://localhost:3001';
+
 
 const Manage = () => {
     const [formData, setFormData] = useState({firstName: "", lastName: "", phoneNumber: "", email: "",
@@ -10,11 +14,19 @@ const Manage = () => {
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
       };
 
-    const handleSubmit = (event) => {
-        //event.preventDefault();
-        alert(`fname: ${formData.firstName},lname: ${formData.lastName} , Email: ${formData.email}, pnum: ${formData.phoneNumber}, id ${formData.idNum}, ad: ${formData.address}, city: ${formData.city}, st: ${formData.state}, jc: ${formData.jobClass}, jr: ${formData.jobRank} `
-        );
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        //alert(`fname: ${formData.firstName},lname: ${formData.lastName} , Email: ${formData.email}, pnum: ${formData.phoneNumber}, id ${formData.idNum}, ad: ${formData.address}, city: ${formData.city}, st: ${formData.state}, jc: ${formData.jobClass}, jr: ${formData.jobRank} `);
+        try {
+            const response = await axios.post('/api/staff', formData);
+            console.log('Response:', response.data);
+            // Handle successful response (if needed)
+        } catch (error) {
+            console.error('Error:', error);
+            // Handle error (if needed)
+        }
     };
+
     return(
     <form onSubmit={handleSubmit}>
         <ul style={{backgroundColor:"white"}}>
