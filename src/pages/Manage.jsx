@@ -15,7 +15,7 @@ const Manage = () => {
       };
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
+        //event.preventDefault();
         //alert(`fname: ${formData.firstName},lname: ${formData.lastName} , Email: ${formData.email}, pnum: ${formData.phoneNumber}, id ${formData.idNum}, ad: ${formData.address}, city: ${formData.city}, st: ${formData.state}, jc: ${formData.jobClass}, jr: ${formData.jobRank} `);
         try {
             const response = await axios.post('/api/staff', formData);

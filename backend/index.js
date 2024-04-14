@@ -27,9 +27,12 @@ async function run() {
     await client.connect();
     console.log('Connected to MongoDB');
 
+    // Connects to DB/Staff
     const database = client.db('my_database');
     const staffCollection = database.collection('staff');
 
+
+    // POST Handler
     app.post('/api/staff', async (req, res) => {
       console.log("Received request with data:", req.body);
       // Extract data from request body
@@ -46,6 +49,8 @@ async function run() {
       }
     });
 
+
+    // GET Handler
     app.get('/api/staff', async (req, res) => {
       try {
         const staffCollection = client.db('my_database').collection('staff');
