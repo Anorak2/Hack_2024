@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Manage from "./pages/Manage.jsx";
 import Main from "./pages/Main.jsx";
 import Notify from "./pages/Notify.jsx";
+import Schedule from "./pages/Schedule.jsx";
 
 function App(){
     return (
@@ -22,6 +23,9 @@ function App(){
                 <Switch>
                     <Route exact path="/">
                         <Main />
+                    </Route>
+                    <Route path="/schedule">
+                        <Schedule />
                     </Route>
                     <Route path="/Manage">
                         <Manage />
