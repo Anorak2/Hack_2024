@@ -62,6 +62,20 @@ async function run() {
       }
     });
 
+    app.put('/api/staff/:id', async (req, res) => {
+      const userId = req.params.id;
+      const { sunday, monday, tuesday, wednesday, thursday, friday, saturday } = req.body;
+      const updatedFields = { sunday, monday, tuesday, wednesday, thursday, friday, saturday };
+  
+      try {
+          const result = await staffCollection.updateOne({ _id: userId }, { $set: updatedFields });
+          res.status(200).send('User schedule updated successfully');
+      } catch (error) {
+          console.error('Error updating user schedule:', error);
+          res.status(500).send('Internal Server Error');
+      }
+    });
+
 
     // Declares Running
     app.listen(port, () => {
