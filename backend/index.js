@@ -62,6 +62,8 @@ async function run() {
       }
     });
 
+
+    // Declares Running
     app.listen(port, () => {
       console.log(`Server running at http://localhost:${port}`);
     });
@@ -70,8 +72,10 @@ async function run() {
     console.error(err);
   }
 }
+
 run().catch(console.dir);
 
+// Handles Closing
 process.on('SIGINT', async () => {
   await client.close();
   process.exit();

@@ -7,7 +7,7 @@ axios.defaults.baseURL = 'http://localhost:3001';
 
 const Manage = () => {
     const [formData, setFormData] = useState({firstName: "", lastName: "", phoneNumber: "", email: "",
-     idNum: "", address: "", city: "", state: "", jobClass: "",  jobRank: ""});
+    address: "", city: "", state: "", jobTitle: ""});
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -39,14 +39,12 @@ const Manage = () => {
             <li>
                 <label htmlFor="phoneNumber">Phone Number: </label>
                 <input type="text" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
-                <label htmlFor="idNum">ID Number:</label>
-                <input type="text" id="idNum" name="idNum" value={formData.idNum} onChange={handleChange}/>
+                <label htmlFor="email">Email:</label>
+                <input type="text" id="email" name="email" value={formData.email} onChange={handleChange}/>
             </li>
             <li>
-                <label htmlFor="jobClass">Job Class: </label>
-                <input type="text" id="jobClass" name="jobClass" value={formData.jobClass} onChange={handleChange}/>
-                <label htmlFor="jobRank">Job Rank: </label>
-                <input type="text" id="jobRank" name="jobRank" value={formData.jobRank} onChange={handleChange}/>
+                <label htmlFor="jobTitle">Job Title: </label>
+                <input type="text" id="jobTitle" name="jobTitle" value={formData.jobTitle} onChange={handleChange}/>
             </li>
             <li>
                 <label htmlFor="address">Address: </label>
