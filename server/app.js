@@ -9,7 +9,7 @@ const message = "Hi there, :P"
 const options = {
     from: "TESTING <project.email888129123@gmail.com>", // sender address
     to: "adamcoleberry@gmail.com", // receiver email
-    subject: "Send email in Node.JS with Nodemailer using Gmail account", // Subject line
+    subject: "Wassup", // Subject line
     text: message,
     html: HTML_TEMPLATE(message),
 }

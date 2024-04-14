@@ -23,6 +23,7 @@ const sendMail = async (mailDetails, callback) => {
     try {
       const info = await transporter.sendMail(mailDetails)
       callback(info);
+      console.log(info);
     } catch (error) {
       console.log(error);
     } 
