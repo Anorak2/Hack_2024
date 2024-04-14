@@ -37,7 +37,7 @@ const Schedule = () => {
   const renderTableRows = () => {
     return staffMembers.map((staff, rowIndex) => (
       <tr key={rowIndex}>
-        <td>{staff.name}</td> {/* Render staff name */}
+        <td>{staff.firstName + " " + staff.lastName}</td> {console.log(staff)}
         {headers.map((day, cellIndex) => (
           <td key={cellIndex}>
             <input
