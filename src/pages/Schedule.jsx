@@ -65,9 +65,12 @@ const Schedule = () => {
     }));
   };
 
-  const handleSubmit = async () => {
-    console.log("Handle Submit");
-    staffMembers.forEach(async (staff, index) => {
+  const handleSubmit = async (event) => {
+  
+    // Initialize an array to store promises for each staff member update
+    const updatePromises = [];
+  
+    staffMembers.forEach((staff, index) => {
       const { _id } = staff;
       const daysWorked = selectedDays[index] || {}; // Get selected days for the staff member
       const updatedDays = Object.fromEntries(
@@ -76,16 +79,23 @@ const Schedule = () => {
           isSelected ? "True" : staff[day.toLowerCase()], // Replace "NA" with "True" if selected
         ])
       );
-      try {
-        const response = await axios.put(`/api/staff/${_id}`, updatedDays);
-        console.log('Response:', response.data);
-        // Handle successful response (if needed)
-      } catch (error) {
-        console.error('Error:', error);
-        // Handle error (if needed)
-      }
+  
+      // Construct the request promise
+      const updatePromise = axios.put(`/api/staff/${_id}`, updatedDays);
+      updatePromises.push(updatePromise);
     });
+  
+    try {
+      // Wait for all update promises to resolve
+      const responses = await Promise.all(updatePromises);
+      console.log('Responses:', responses.map(response => response.data));
+      // Handle successful responses (if needed)
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error (if needed)
+    }
   };
+  
   
   
 

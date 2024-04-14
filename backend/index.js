@@ -62,6 +62,8 @@ async function run() {
       }
     });
 
+
+    // PUT Handler
     app.put('/api/staff/:id', async (req, res) => {
       const userId = req.params.id;
       const { sunday, monday, tuesday, wednesday, thursday, friday, saturday } = req.body;
