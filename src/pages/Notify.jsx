@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import nodemailer from 'nodemailer';
 
-
-async function Notify(){
-
+const Main = () => {
+    return(
+    <div className="Manage">
+        <button>hallo
+        </button>
+    </div>
+    );
 }
-
-Notify;
+export default Main;
