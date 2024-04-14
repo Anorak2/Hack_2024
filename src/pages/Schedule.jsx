@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import StaffList from "../components/StaffList"
+import axios from 'axios';
 import "../css/schedule.css"
+
+axios.defaults.baseURL = 'http://localhost:3001';
 
 const Schedule = () => {
   const [tableData, setTableData] = useState([]);
@@ -63,24 +66,28 @@ const Schedule = () => {
   };
 
   const handleSubmit = async () => {
-    // Assuming you have staff member IDs stored in staffMembers array
+    console.log("Handle Submit");
     staffMembers.forEach(async (staff, index) => {
       const { _id } = staff;
       const daysWorked = selectedDays[index] || {}; // Get selected days for the staff member
+      const updatedDays = Object.fromEntries(
+        Object.entries(daysWorked).map(([day, isSelected]) => [
+          day.toLowerCase(), // Convert day to lowercase
+          isSelected ? "True" : staff[day.toLowerCase()], // Replace "NA" with "True" if selected
+        ])
+      );
       try {
-        await fetch(`http://localhost:3001/api/staff/${_id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(daysWorked),
-        });
-        console.log(`Updated schedule for staff member ${staff.name}`);
+        const response = await axios.put(`/api/staff/${_id}`, updatedDays);
+        console.log('Response:', response.data);
+        // Handle successful response (if needed)
       } catch (error) {
-        console.error(`Error updating schedule for staff member ${staff.name}:`, error);
+        console.error('Error:', error);
+        // Handle error (if needed)
       }
     });
   };
+  
+  
 
   return (
     <div>
