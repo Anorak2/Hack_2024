@@ -26,13 +26,11 @@ const Notify = () => {
     };
 
     return (
-        <div className="Manage">
+        <>
             <h1>Notification Panel</h1>
-            <div>
             <StaffCard onCheck={handleCheckboxChange}/>    
-            </div>
-            <button onClick={sendEmails}>Notify</button>
-        </div>
+            <button style={{marginBottom:"100px"}} onClick={sendEmails}>Notify</button>
+        </>
     );
 }
 
