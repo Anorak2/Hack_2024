@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { MongoClient } = require("mongodb");
+var mailRouter = require('./mail/mailer');
 
 
 const app = express();
@@ -10,11 +11,14 @@ const port = 3001;
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
+app.use("/mail", mailRouter)
+
 
 //Catch for /
 app.get('/', (req, res) => {
   res.send('Hello nerd!');
 });
+
 
 // Replace the uri string with your connection string.
 const uri = "mongodb+srv://dbuser:HackKU@cluster0.6toorrz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -60,6 +64,10 @@ async function run() {
         console.error('Failed to retrieve data:', error);
         res.status(500).send('Failed to get staff data');
       }
+    });
+
+    app.get('/api/email', async (req, res) => {
+      
     });
 
 

@@ -18,7 +18,7 @@ const Notify = () => {
 
     const sendEmails = async () => {
         selectedStaff.forEach(({ email, name, sunday, monday, tuesday, wednesday, thursday, friday, saturday }) => {
-            fetch(`http://localhost:8080/mail?to=${email}&name=${name}&sunday=${sunday}&monday=${monday}&tuesday=${tuesday}&wednesday=${wednesday}&thursday=${thursday}&friday=${friday}&saturday=${saturday}`)
+            fetch(`http://localhost:3001/mail?to=${email}&name=${name}&sunday=${sunday}&monday=${monday}&tuesday=${tuesday}&wednesday=${wednesday}&thursday=${thursday}&friday=${friday}&saturday=${saturday}`)
                 .then(res => res.text())
                 .then(res => console.log(`Email sent to (${email}):`, res))
                 .catch(err => console.error(`Error sending email to (${email}):`, err));
